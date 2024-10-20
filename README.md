@@ -21,6 +21,7 @@ Este projeto é uma aplicação simples de um Sistema Bancário desenvolvido em 
 🔗 Relação entre Bancos e Contas: Cada banco pode gerenciar múltiplas contas.
 
 🔒 Segurança
+
 O sistema utiliza o Spring Security para garantir a segurança das operações bancárias, com autenticação de usuários via credenciais em Base64. Apenas usuários autenticados podem acessar as funcionalidades de gerenciamento de contas e realizar transações.
 
 Autenticação Basic (Base64): Implementada para proteger o acesso ao sistema, exigindo que os usuários enviem suas credenciais (CPF e senha) codificadas em Base64 no cabeçalho da requisição HTTP.
