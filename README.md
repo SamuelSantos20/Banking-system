@@ -1,5 +1,7 @@
 
-💻 Sistema Bancário 🏦
+💻 Sistema Bancário
+
+🏦
 Este projeto é uma aplicação simples de um Sistema Bancário desenvolvido em Java, utilizando Spring Boot com Spring Security e autenticação em Base64. O sistema permite gerenciar bancos, clientes e contas, realizar operações bancárias e acompanhar o histórico de transações. 🚀
 
 ⚙️ Funcionalidades
