@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Cliente - Sistema Bancário</title>
+    <style>
+        /* Estilos globais */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header {
+            background-color: #0044cc; /* Azul corporativo */
+            color: white;
+            padding: 20px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 0;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        main {
+            width: 100%;
+            max-width: 500px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 80px;
+        }
+
+        h2 {
+            color: #0044cc;
+            text-align: center;
+        }
+
+        /* Formulário de registro */
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"], 
+        input[type="number"]{
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        button {
+            background-color: #0044cc;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0033a0;
+        }
+
+        /* Responsividade */
+        @media (max-width: 600px) {
+            main {
+                width: 90%;
+            }
+        }
+		
+		p , a{
+
+		    color: #0033a0;
+		    text-decoration: none;
+		}
+		p , a:hover{
+		color: #3a72e0;
+
+		}
+		
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sistema Bancário - Registro de Cliente</h1>
+    </header>
+    <main>
+        <!-- Seção de Registro -->
+        <section id="register-section">
+            <h2>Registrar Novo Cliente</h2>
+            <form id="register-form" th:object="${Customer}" method="post" th:action="@{/register/customer}">
+				
+				<input type="hidden" name="authentication" th:value="${authentication}">
+								
+                <label for="name">Nome Completo:</label>
+                <input type="text" id="name" name="name" placeholder="Digite seu nome completo" th:field="*{name}" required>
+                
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" placeholder="Digite seu e-mail" th:field="*{email}" required>
+                
+                <label for="cpf">CPF:</label>
+                <input type="text" id="cpf" name="cpf" placeholder="Digite seu cpf" th:field="*{cpf}" required autocomplete="off">
+                
+                <label for="password">Senha:</label>
+                <input type="password" id="password" name="password" placeholder="Digite sua senha" th:field="*{password}" required>
+                
+                <label for="confirm-password">Confirmar Senha:</label>
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirme sua senha" required>
+                
+                <button type="submit">Registrar</button>
+            </form>
+			<p>Já tem uma conta? <a th:href="@{/loginRequest}">Realize o login</a></p>
+        </section>
+    </main>
+</body>
+</html>

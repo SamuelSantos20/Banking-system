@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Histórico de Operações - Sistema Bancário</title>
+
+	<style>
+		/* Estilos corporativos */
+		body {
+			font-family: 'Arial', sans-serif;
+			background-color: #000;
+			margin: 0;
+			padding: 0;
+			color: #333;
+		}
+
+		header {
+			background-color: #002855;
+			/* Azul escuro corporativo */
+			padding: 20px;
+			text-align: center;
+			color: #fff;
+		}
+
+		h1 {
+			margin: 0;
+		}
+
+		nav {
+			background-color: #003366;
+			/* Azul escuro */
+			padding: 10px;
+			text-align: center;
+		}
+
+		nav ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			display: flex;
+			justify-content: center;
+		}
+
+		nav ul li {
+			margin: 0 15px;
+		}
+
+		nav ul li a {
+			color: white;
+			text-decoration: none;
+			font-size: 16px;
+			padding: 8px 16px;
+			border-radius: 4px;
+			transition: background-color 0.3s;
+		}
+
+		nav ul li a:hover {
+			background-color: #0044cc;
+			/* Azul mais claro no hover */
+		}
+
+		main {
+			padding: 40px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 80vh;
+		}
+
+		.history-section {
+			background-color: #fff;
+			padding: 40px;
+			border-radius: 8px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			width: 600px;
+		}
+
+		.history-section h2 {
+			color: #0056b3;
+			/* Azul primário mais claro */
+			margin-bottom: 30px;
+		}
+
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			margin-bottom: 20px;
+		}
+
+		table, th, td {
+			border: 1px solid #ccc;
+		}
+
+		th, td {
+			padding: 12px;
+			text-align: center;
+		}
+
+		th {
+			background-color: #0056b3;
+			color: white;
+		}
+
+		tr:nth-child(even) {
+			background-color: #f9f9f9;
+		}
+
+		tr:hover {
+			background-color: #f1f1f1;
+		}
+
+		footer {
+			text-align: center;
+			color: #aaa;
+			padding: 10px;
+		}
+
+		@media (max-width: 768px) {
+			main {
+				padding: 20px;
+			}
+
+			.history-section {
+				width: 100%;
+				padding: 20px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<header>
+		<h1>Sistema Bancário</h1>
+	</header>
+
+	<!-- Barra de navegação -->
+	<nav>
+		<ul>
+			<li><a th:href="@{/index}">Conta</a></li>
+			<li><a th:href="@{/pre/sake/account}">Saque</a></li>
+			<li><a th:href="@{/pre/deposit/account}">Depósito</a></li>
+			<li><a th:href="@{/access/operations/list}">Histórico</a></li>
+		</ul>
+	</nav>
+
+	<main>
+		<section class="history-section">
+			<h2>Histórico de Operações</h2>
+			<table>
+				<thead>
+					<tr>
+						<th>Data</th>
+						<th>Tipo de Operação</th>
+						<th>Valor</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="o : ${operation}">
+						<td th:text="${#dates.format(o.date, 'dd/MM/yyyy - HH:mm:ss')}"></td>
+						<td th:text="${o.type}"></td>
+						<td th:text="${ 'R$' + o.value}"></td>
+					</tr>
+					<!-- Adicione mais operações conforme necessário -->
+				</tbody>
+			</table>
+		</section>
+	</main>
+
+	<footer>
+		<p>&copy; 2024 Sistema Bancário. Todos os direitos reservados.</p>
+	</footer>
+</body>
+
+</html>

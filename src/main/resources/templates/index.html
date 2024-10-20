@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Bancário - Principal</title>
+    <style>
+        /* Estilos globais */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;  /* Fundo neutro */
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #002855; /* Azul corporativo */
+            color: white;
+            padding: 20px;
+            width: 100%;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+			
+        }
+
+        nav {
+            background-color: #003366; /* Azul escuro */
+            position: fixed;
+            top: 70px; /* Para ficar abaixo do header */
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+			margin-top: 30px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #0044cc; /* Azul mais claro no hover */
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+            max-width: 400px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 180px auto 0 auto;  /* Ajustado para considerar a navbar */
+        }
+
+        h2 {
+            color: #0044cc;  /* Azul para títulos */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+	
+        /* Botões e campos de input */
+        button, input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        input[type="number"] {
+            border: 1px solid #ddd;
+        }
+
+        button {
+            background-color: #0044cc;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0033a0;  /* Azul mais escuro no hover */
+        }
+
+        #balance {
+            font-weight: bold;
+            font-size: 18px;
+        }
+		
+		
+
+        #deposit-section, 
+        #withdraw-section {
+            margin-top: 20px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 600px) {
+            main {
+                width: 90%;
+            }
+        }
+
+        a {
+            text-decoration: none;    
+            color: #fff;
+        }
+		
+		p{text-align: center;}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sistema Bancário</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a th:href="@{/index}">Conta</a></li>
+            <li><a th:href="@{/pre/sake/account}">Saque</a></li>
+            <li><a th:href="@{/pre/deposit/account}">Deposito</a></li>
+			<li><a th:href="@{/access/operations/list}">Histórico</a></li>
+        </ul>
+    </nav>
+    <main>
+        <!-- Seção de Operações Bancárias -->
+        <section id="bank-operations">
+            <h2 th:text="${'Bem-vindo(a): ' + name }"></h2>
+            <p th:text="${'Saldo Atual: '+ 'R$'+ balance}"> <span id="balance"></span></p>
+            <a th:href="@{/pre/deposit/account}"><button type="submit"> Depósito</button></a>
+            <a th:href="@{/pre/sake/account}"><button type="submit">Saque</button></a>
+        </section>
+    </main>
+</body>
+</html>
